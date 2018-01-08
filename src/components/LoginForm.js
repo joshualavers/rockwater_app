@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Keyboard, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
-import { CardSection, Input, Button, Spinner } from './common';
+import { CardSection, Input, Button, Spinner, Card } from './common';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 class LoginForm extends Component {
@@ -26,7 +26,7 @@ class LoginForm extends Component {
     }
 
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
+      <Button onPress={this.onButtonPress.bind(this)} style={{ backgroundColor: 'rgba(0,0,0,0)' }}>
         Login
       </Button>
     );
@@ -51,30 +51,31 @@ class LoginForm extends Component {
           source={{ uri: 'http://www.hometeamnl.ca/myfiles/Fotolia_22392883_M.jpg' }}
           style={styles.backgroundImage}
         >
-       <CardSection>
-          <Input
-            label="Email"
-            placeholder="email@gmail.com"
-            onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
-            style={{ backgroundColor: 'transparent' }}
-          />
-        </CardSection>
-        <CardSection>
-          <Input
-            secureTextEntry
-            label="Password"
-            placeholder="password"
-            onChangeText={this.onPasswordChange.bind(this)}
-            value={this.props.password}
-          />
-        </CardSection>
+          <Card>
+           <CardSection style={styles.inputStyle}>
+              <Input
+                label="Email"
+                placeholder="email@gmail.com"
+                onChangeText={this.onEmailChange.bind(this)}
+                value={this.props.email}
+              />
+            </CardSection>
+            <CardSection style={styles.inputStyle}>
+              <Input
+                secureTextEntry
+                label="Password"
+                placeholder="password"
+                onChangeText={this.onPasswordChange.bind(this)}
+                value={this.props.password}
+              />
+            </CardSection>
 
-        {this.renderError()}
+            {this.renderError()}
 
-        <CardSection>
-          {this.renderButton()}
-        </CardSection>
+            <CardSection style={styles.inputStyle}>
+              {this.renderButton()}
+            </CardSection>
+          </Card>
         </ImageBackground>
       </View>
     );
@@ -100,6 +101,9 @@ const styles = {
     left: 0,
     width: '100%',
     height: '100%'
+  },
+  inputStyle: {
+    backgroundColor: 'rgba(0,0,0,0.4)'
   }
 };
 

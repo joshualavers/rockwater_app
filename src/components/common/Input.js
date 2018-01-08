@@ -16,7 +16,7 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
         style={inputStyle}
       />
     </View>
-  )
+  );
 };
 
 const styles = {
@@ -37,8 +37,9 @@ const styles = {
     height: 40,
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center'
-
+    alignItems: 'center',
+    borderRadius: 20,
+    borderWidth: 1
   }
 };
 
